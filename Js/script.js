@@ -15,12 +15,13 @@ $.ajax({
     console.log(data);
 
     const info = data.results;
-    const gallery = '';
-    const modalBox = '';
+    let gallery = '';
+    let modalBox = '';
 
     $.each(info, function (index, employee) {
         const name = employee.name.first + '' + employee.name.last;
         const email = employee.email;
+        const picture = employee.picture.large;
         const city = employee.location.city;
         const number = employee.phone;
         const address = employee.location.street + '' + location + '' + employee.location.postcode;
