@@ -28,27 +28,12 @@ $.ajax({
         const birthday = employee.dob.date;
 
         modalBox += '<div class="modal-container">';
-        modalBox += '<div class="modal" data-index="'+index+'">';
-        modalBox += '<button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>';
-        modalBox += '<div class="modal-info-container"><img class="modal-img" src= ' + picture + ' alt="profile picture"><h3 id="name" class="modal-name cap">' + name + '</h3><p class="modal-text">' + email + '</p><p class="modal-text cap">' + city + '</p>';
-        modalBox += '<hr>';
-        modalBox += '<p class="modal-text">' + number + '</p><p class="modal-text">' + address + '</p><p class="modal-text">' + birthday + '</p>';
-        modalBox += '</div></div>';
-
-        // <div class="modal-container">
-        //     <div class="modal">
-        //         <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-        //         <div class="modal-info-container">
-        //             <img class="modal-img" src="https://placehold.it/125x125" alt="profile picture">
-        //             <h3 id="name" class="modal-name cap">name</h3>
-        //             <p class="modal-text">email</p>
-        //             <p class="modal-text cap">city</p>
-        //             <hr>
-        //             <p class="modal-text">(555) 555-5555</p>
-        //             <p class="modal-text">123 Portland Ave., Portland, OR 97204</p>
-        //             <p class="modal-text">Birthday: 10/21/2015</p>
-        //         </div>
-        //     </div>
+         modalBox += '<div class="modal" data-index="'+index+'">';
+         modalBox += '<button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>';
+         modalBox += '<div class="modal-info-container"><img class="modal-img" src= ' + picture + ' alt="profile picture"><h3 id="name" class="modal-name cap">' + name + '</h3><p class="modal-text">' + email + '</p><p class="modal-text cap">' + city + '</p>';
+         modalBox += '<hr>';
+         modalBox += '<p class="modal-text">' + number + '</p><p class="modal-text">' + address + '</p><p class="modal-text">' + birthday + '</p>';
+         modalBox += '</div></div>';
 
         gallery += '<div class="card" data-index="'+index+'">';
         gallery += '<div class="card-img-container">';
@@ -61,25 +46,23 @@ $.ajax({
 
       $('#gallery').append(gallery);
       $('body').append(modalBox);
+
+      $('.card').on('click',function() {
+        console.log('card clicked');
+        $(".modal", $(".modal-container")).show( function(index) {
+            if( $(this).data('index') === indexInfo){
+                $('.modal', $('.modal-container')).addClass('active');
+            }  else   $('.modal', $('.modal-container')).removeClass('active');
+        });
+
+      });
+      const modalButton = $('#modal-close-btn');
+
+      $('#modal-close-btn, .modal, .modal-container').on('click', function() {
+        $('.modal',$('.modal-container')).removeClass('active');
+      });
     }
+
 
 })
 const indexInfo = $(this).data('index');
-
-//$(document).ready( function () {
-
-  $('.card').on('click',function() {
-    console.log('card clicked');
-    $(".modal", $(".modal-container")).each( function(index) {
-        if( $(this).data('index') === indexInfo){
-            $('.modal', $('.modal-container')).addClass('active');
-        }  else   $('.modal', $('.modal-container')).removeClass('active');
-    });
-
-  });
-  const modalButton = $('#modal-close-btn');
-
-  $('#modal-close-btn, .modal, .modal-container').on('click', function() {
-    $('.modal',$('.modal-container')).removeClass('active');
-  });
-//})
