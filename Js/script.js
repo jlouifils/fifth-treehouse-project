@@ -50,10 +50,6 @@ $.ajax({
     }
 
 })
-
-const card = $('.card');
-const modal = $('.modal');
-const modalContain = $('.modal-contanier')
 const indexInfo = $(this).data('index');
 
 $(document).ready( function () {
