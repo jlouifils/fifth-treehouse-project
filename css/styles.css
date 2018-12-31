@@ -152,6 +152,10 @@ header h1 {
 		visibility: hidden;
 }
 
+.modal.acive {
+	visibility: visible;
+}
+
 .modal-close-btn {
     position: absolute;
     top: 15px;

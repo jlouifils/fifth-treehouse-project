@@ -61,8 +61,9 @@ $(document).ready( function () {
   $('.card').on('click',function() {
     console.log('card clicked');
     $(".modal", $(".modal-container")).each( function(index) {
-        if( $(this).data('index') === indexInfo) $(this).addClass('active');
-        else $(this).removeClass('active');
+        if( $(this).data('index') === indexInfo){
+            $('.modal', $('.modal-container')).addClass('active');
+        }  else   $('.modal', $('.modal-container')).removeClass('active');
     });
 
   });
