@@ -27,13 +27,13 @@ $.ajax({
         const address = employee.location.street + " " + city + " " + employee.location.postcode;
         const birthday = employee.dob.date;
 
-        modalBox += '<div class="modal-container">';
          modalBox += '<div class="modal" data-index="'+index+'">';
          modalBox += '<button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>';
          modalBox += '<div class="modal-info-container"><img class="modal-img" src= ' + picture + ' alt="profile picture"><h3 id="name" class="modal-name cap">' + name + '</h3><p class="modal-text">' + email + '</p><p class="modal-text cap">' + city + '</p>';
          modalBox += '<hr>';
          modalBox += '<p class="modal-text">' + number + '</p><p class="modal-text">' + address + '</p><p class="modal-text">' + birthday + '</p>';
-         modalBox += '</div></div>';
+         modalBox += '</div>';
+
 
         gallery += '<div class="card" data-index="'+index+'">';
         gallery += '<div class="card-img-container">';
@@ -42,14 +42,15 @@ $.ajax({
         gallery += '<p class="card-text">' + email + '</p><p class="card-text cap">' + city + '</p>';
         gallery += '</div></div>';
 
-        });
+        })
 
       $('#gallery').append(gallery);
-      $('body').append(modalBox);
+      $('#gallery').append(modalBox);
 
+let indexInfo = $(this).data('index')
       $('.card').on('click',function() {
         console.log('card clicked');
-        $(".modal", $(".modal-container")).show( function(index) {
+        $(".modal", $(".modal-container")).each( function(index) {
             if( $(this).data('index') === indexInfo){
                 $('.modal', $('.modal-container')).addClass('active');
             }  else   $('.modal', $('.modal-container')).removeClass('active');
