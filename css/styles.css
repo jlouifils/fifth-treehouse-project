@@ -131,9 +131,11 @@ header h1 {
     bottom: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.7);
+		visibility: hidden;
 	}
-
-
+.modal-container.active {
+	visibility: visible;
+}
 
 .modal {
     position: relative;
@@ -146,9 +148,11 @@ header h1 {
     border-radius: 0.25em;
     border: 1px solid rgba(100, 100, 100, 0.3);
     transition: .4s ease-out;
-
+		visibility: hidden;
 }
 
+.modal.active {
+	visibility: visible;
 }
 
 .modal-close-btn {

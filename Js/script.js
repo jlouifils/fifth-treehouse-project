@@ -36,35 +36,37 @@ $.ajax({
          modalBox += '</div></div>';
 
 
-        gallery += '<div class="card" data-index="'+index+'">';
-        gallery += '<div class="card-img-container">';
-        gallery += '<img class="card-img" src= ' + picture + ' alt="profile picture"></div>';
-        gallery += '<div class="card-info-container"><h3 id="name" class="card-name cap">' + name + '</h3>';
-        gallery += '<p class="card-text">' + email + '</p><p class="card-text cap">' + city + '</p>';
-        gallery += '</div></div>';
+         gallery += '<div class="card" data-index="'+index+'">';
+         gallery += '<div class="card-img-container">';
+         gallery += '<img class="card-img" src= "' + picture + '" alt="profile picture"></div>';
+         gallery += '<div class="card-info-container"><h3 id="name" class="card-name cap">' + name + '</h3>';
+         gallery += '<p class="card-text">' + email + '</p><p class="card-text cap">' + city + '</p>';
+         gallery += '</div></div>';
 
         })
 
-      $('div#gallery').append(gallery);
-      $('div.modal-container').append(modalBox);
+        $(document).ready(function () { //this makes sure the function will run only after the elements are fully loaded
 
-let indexInfo = $(this).data('index')
+              $('.card').on("click", function() {
+                var theIndex = $(this).data("index"); //this references the data stored in the card
+                console.log('clicking the gallery card should display the modal' + data)
+                $(".modal", $(".modal-container")).each(function(index){ //if the data between the gallery card and the modal match, then add active class, if not remove it
+                    if( $(this).data("index") === theIndex) $(this).addClass("active");
+                    else $(this).removeClass("active");
+                });
+            });
 
-      $('.card').on('click',function() {
-        console.log('card clicked');
-        $(".modal", $(".modal-container")).each( function(index) {
-            if( $(this).data('index') === indexInfo){
-                $('.modal', $('.modal-container')).addClass('active');
-            }  else   $('.modal', $('.modal-container')).removeClass('active');
-        });
-
-      });
-      const modalButton = $('#modal-close-btn');
-
-      $('#modal-close-btn, .modal, .modal-container').on('click', function() {
-        $('.modal',$('.modal-container')).removeClass('active');
-      });
-    }
+            $('#modal-close-btn, .modal, .modal-container').on("click", function() {//clicking on the X button,modal or outside will remove the active class
+                $(".modal", $(".modal-container")).removeClass("active");
+                console.log('you clicked on the x button');
+            });
+         })
 
 
-})
+
+         $('#gallery').append(gallery); //Append Finally all cards with employee details
+         //Finally, I will append modalBoxContainer inside body tag
+         $('body').append(modalBox);
+        }
+
+      })
