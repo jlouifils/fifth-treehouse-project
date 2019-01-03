@@ -13,12 +13,15 @@ $.ajax({
   dataType: 'json',
   success: function(data) {
     console.log(data);
-
+    // creating a reference to data.results
     const info = data.results;
+    // create varible for gallery
     let gallery = '';
+    // create varible for modal containers
     let modalBox = '';
 
     $.each(info, function (index, employee) {
+      //create variable references for Name, email, city,state, etc
         const name = employee.name.first + " " + employee.name.last;
         const email = employee.email;
         const picture = employee.picture.large;
@@ -27,6 +30,8 @@ $.ajax({
         const address = employee.location.street + " " + city + " " + employee.location.postcode;
         const birthday = employee.dob.date;
 
+        //CREATE GALLERY CARDS AND SHOW CONTENT FOR SMALL GALLERY CARDS
+        // erik help me understand how and the why of doing it this way
          modalBox += '<div class="modal-container">'
          modalBox += '<div class="modal" data-index="'+index+'">';
          modalBox += '<button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>';
@@ -35,7 +40,7 @@ $.ajax({
          modalBox += '<p class="modal-text">' + number + '</p><p class="modal-text">' + address + '</p><p class="modal-text">' + birthday + '</p>';
          modalBox += '</div></div>';
 
-
+         //CREATE MODAL CARDS AND SHOW CONTENT FOR THEM
          gallery += '<div class="card" data-index="'+index+'">';
          gallery += '<div class="card-img-container">';
          gallery += '<img class="card-img" src= "' + picture + '" alt="profile picture"></div>';
