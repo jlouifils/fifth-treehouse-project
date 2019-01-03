@@ -44,28 +44,29 @@ $.ajax({
          gallery += '</div></div>';
 
         })
-
-        $(document).ready(function () { //this makes sure the function will run only after the elements are fully loaded
+        //this makes sure the function will run only when the elements are fully loaded
+        $(document).ready(function () {
 
               $('.card').on("click", function() {
                 var theIndex = $(this).data("index"); //this references the data stored in the card
                 console.log('clicking the gallery card should display the modal' + data)
-                $(".modal", $(".modal-container")).each(function(index){ //if the data between the gallery card and the modal match, then add active class, if not remove it
+                $(".modal", $(".modal-container")).each(function(index){
+                   //if the data between the gallery card and the modal matches, then add active classes, if not remove active classes
                     if( $(this).data("index") === theIndex) $(this).addClass("active");
                     else $(this).removeClass("active");
                 });
             });
-
-            $('#modal-close-btn, .modal, .modal-container').on("click", function() {//clicking on the X button,modal or outside will remove the active class
+              //clicking on the X button,modal or outside will remove the active class
+            $('#modal-close-btn, .modal, .modal-container').on("click", function() {
                 $(".modal", $(".modal-container")).removeClass("active");
                 console.log('you clicked on the x button');
             });
          })
 
 
-
-         $('#gallery').append(gallery); //Append Finally all cards with employee details
-         //Finally, I will append modalBoxContainer inside body tag
+         //Append gallery cards with employee details
+         $('#gallery').append(gallery);
+         //Finally, I will append modalBox inside body tag
          $('body').append(modalBox);
         }
 
