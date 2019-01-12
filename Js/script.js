@@ -18,7 +18,7 @@ $.ajax({
     // create varible for gallery
     let gallery = '';
     // create varible for modal containers
-    let modalBox = '';
+    let modalBox = ''; 
 
     $.each(info, function (index, employee) {
       //create variable references for Name, email, city,state, etc
